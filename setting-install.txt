@@ -1,0 +1,118 @@
+>npm ini -y
+>npm i -D parcel-bundler
+ "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+>npx tsc --init (옵션)
+>npm run dev
+
+https://www.jsdelivr.com/package/npm/reset-css
+
+>npm install -D parcel-plugin-static-files-copy
+
+},
+  "staticFiles": {
+    "staticPath": "static"
+  }
+
+static 폴더 만들고
+favicon.ico 파일을 static 폴더에 넣어준다
+
+>npm run dev
+
+//------------------------
+// autoprefixer
+//------------------------
+>npm i -D postcss autoprefixer
+
+package.json 파일에 다음과 같은 내용을 추가해준다
+ },
+  "staticFiles": {
+    "staticPath": "static"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
+
+.postcssrc.js 파일을 만들고 아래 내용을 추가
+const autoprefixer = require('autoprefixer')
+
+module.exports = {
+  plugins: [
+    autoprefixer
+  ]
+}
+
+>npm run dev 치면 에러발생
+autoprefixer10과 postcss8간에 충돌발생됨
+--> autoprefixer9로 재설치해주면 해결됨
+>npm i -D autoprefixer@9
+>npm run dev 했을때 이상없이 잘 돌아감
+//---------------------
+// 바벨설치
+//--------------------
+//바벨은 ES6이상의 버번의 JS를 ES5 버전으로 JS를 변환해주는 컴파일러
+>npm i -D @babel/core @babel/preset-env
+
+.babelrc.js 파일을 만들고 아래 내용을 추가
+module.exports = {
+  presets: ['@babel/preset-env']
+}
+
+>npm run dev 문제없음
+
+>npm i -D @babel/plugin-transform-runtime
+
+.babelrc.js 파일에서 다음과 같이 작성한다
+module.exports = {
+  presets: ['@babel/preset-env'],
+  plugins: [
+    ['@babel/plugin-transform-runtime']
+  ]
+}
+
+>npm run dev
+//-----------------------
+//CLI
+//----------------------
+
+구글검색 : parcel 한글판
+https://ko.parceljs.org/getting_started.html
+CLI 확인
+
+//-----------------------
+// github 저장소 업로드
+//----------------------
+.gitignore 파일 만들어서 다음과 같이 작성한다
+.cache
+node_modules
+dist
+
+>git init
+>git status
+>git add .
+>git status
+>git commit -m 'Create project'
+>git log
+
+힛헙저장소에 새프로젝트 만든다
+parcel-template-basic
+
+>git remote add origin https://github.com/ymbaik/parcel-template-basic.git
+>git push origin master
+ 
+깃헙 저장소 새로고침한다
+
+
+>git rm -r --cached .
+
+.gitingore 수정
+	.cache
+	node_modules
+	dist
+
+
+
